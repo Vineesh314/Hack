@@ -18,7 +18,7 @@ import twitter4j.JSONObject;
 
 import com.sun.xml.internal.messaging.saaj.util.Base64;
 
-public class twittersearch2 {
+public class TwitterOperations {
 	private final static String getTokenURL = "https://api.twitter.com/oauth2/token";
 	private static String bearerToken;
 	static final String ACCESS_TOKEN = "3013300573-DxiN7arVqrio38ICoHTJJ9sKujEA2b8AHLNx1yG";

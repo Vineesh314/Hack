@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 
 import twitter4j.JSONException;
 
-import com.hack.java.twittersearch2;
+import com.hack.java.TwitterOperations;
 import com.hack.utils.Responses;
 
 @Component
@@ -33,18 +33,17 @@ public class TwitterRest {
 			@QueryParam("authTokenSecret") final String authTokenSecret,
 			@QueryParam("screenName") final String screenName)
 			throws IOException {
-		twittersearch2 ts = new twittersearch2();
+		TwitterOperations tweet = new TwitterOperations();
 
 		Responses response = new Responses();
 		response.setMessage("Success");
 		response.setStatus("200");
 
 		try {
-			System.out.println(ts.getJSONwithScreenName(screenName));
-			response.setResults(ts.getJSONwithScreenName(screenName));
+			System.out.println(tweet.getJSONwithScreenName(screenName));
+			response.setResults(tweet.getJSONwithScreenName(screenName));
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println(e.getLocalizedMessage());
 		}
 
 		return response;
@@ -57,18 +56,17 @@ public class TwitterRest {
 	public Object getDetailsId(@QueryParam("authToken") final String authToken,
 			@QueryParam("authTokenSecret") final String authTokenSecret,
 			@QueryParam("userId") final String userId) throws IOException {
-		twittersearch2 ts = new twittersearch2();
+		TwitterOperations tweet = new TwitterOperations();
 
 		Responses response = new Responses();
 		response.setMessage("Success");
 		response.setStatus("200");
 
 		try {
-			System.out.println(ts.getJSONwithId(userId));
-			response.setResults(ts.getJSONwithId(userId));
+			System.out.println(tweet.getJSONwithId(userId));
+			response.setResults(tweet.getJSONwithId(userId));
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println(e.getLocalizedMessage());
 		}
 
 		return response;
