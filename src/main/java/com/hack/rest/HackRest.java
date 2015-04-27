@@ -11,7 +11,7 @@ import javax.ws.rs.core.MediaType;
 
 import org.springframework.stereotype.Component;
 
-import com.hack.java.Employee;
+import com.hack.utils.Employee;
 
 @Component
 @Path("/hack")

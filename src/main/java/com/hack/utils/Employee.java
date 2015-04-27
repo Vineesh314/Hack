@@ -1,4 +1,4 @@
-package com.hack.java;
+package com.hack.utils;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
