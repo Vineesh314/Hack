@@ -8,6 +8,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import twitter4j.JSONException;
@@ -18,6 +19,9 @@ import com.hack.utils.Responses;
 @Component
 @Path("/twitter")
 public class TwitterRest {
+
+	@Autowired
+	private TwitterOperations twitterOperations;
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
@@ -33,15 +37,16 @@ public class TwitterRest {
 			@QueryParam("authTokenSecret") final String authTokenSecret,
 			@QueryParam("screenName") final String screenName)
 			throws IOException {
-		TwitterOperations tweet = new TwitterOperations();
 
 		Responses response = new Responses();
 		response.setMessage("Success");
 		response.setStatus("200");
 
 		try {
-			System.out.println(tweet.getJSONwithScreenName(screenName));
-			response.setResults(tweet.getJSONwithScreenName(screenName));
+			System.out.println(twitterOperations
+					.getJSONwithScreenName(screenName));
+			response.setResults(twitterOperations
+					.getJSONwithScreenName(screenName));
 		} catch (JSONException e) {
 			System.out.println(e.getLocalizedMessage());
 		}
@@ -56,15 +61,14 @@ public class TwitterRest {
 	public Object getDetailsId(@QueryParam("authToken") final String authToken,
 			@QueryParam("authTokenSecret") final String authTokenSecret,
 			@QueryParam("userId") final String userId) throws IOException {
-		TwitterOperations tweet = new TwitterOperations();
 
 		Responses response = new Responses();
 		response.setMessage("Success");
 		response.setStatus("200");
 
 		try {
-			System.out.println(tweet.getJSONwithId(userId));
-			response.setResults(tweet.getJSONwithId(userId));
+			System.out.println(twitterOperations.getJSONwithId(userId));
+			response.setResults(twitterOperations.getJSONwithId(userId));
 		} catch (JSONException e) {
 			System.out.println(e.getLocalizedMessage());
 		}

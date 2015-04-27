@@ -19,12 +19,74 @@ import twitter4j.JSONObject;
 import com.sun.xml.internal.messaging.saaj.util.Base64;
 
 public class TwitterOperations {
-	private final static String getTokenURL = "https://api.twitter.com/oauth2/token";
+
+	/*
+	 * private final static String getTokenURL =
+	 * "https://api.twitter.com/oauth2/token"; private static String
+	 * bearerToken; static final String ACCESS_TOKEN =
+	 * "3013300573-DxiN7arVqrio38ICoHTJJ9sKujEA2b8AHLNx1yG"; static final String
+	 * ACCESS_SECRET = "gZwbQfXeHHocYaenASQqgQIJcaORpd5Wu5zGZ0HK7iU51"; static
+	 * final String CONSUMER_KEY = "9iXXUZRYTbY47tAnUAM0r9tth"; static final
+	 * String CONSUMER_SECRET =
+	 * "xZKJ9L0CyZfDCfa1PibRmxjsugGvqYi2UMwLm4RJowXl7m1sC2";
+	 */
+
 	private static String bearerToken;
-	static final String ACCESS_TOKEN = "3013300573-DxiN7arVqrio38ICoHTJJ9sKujEA2b8AHLNx1yG";
-	static final String ACCESS_SECRET = "gZwbQfXeHHocYaenASQqgQIJcaORpd5Wu5zGZ0HK7iU51";
-	static final String CONSUMER_KEY = "9iXXUZRYTbY47tAnUAM0r9tth";
-	static final String CONSUMER_SECRET = "xZKJ9L0CyZfDCfa1PibRmxjsugGvqYi2UMwLm4RJowXl7m1sC2";
+
+	private String twitterBaseUrl;
+	private String twitterAccessToken;
+	private String twitterAccessSecret;
+	private static String twitterConsumerKey;
+	private static String twitterConsumerSecret;
+	private static String twitterTokenUrl;
+
+	/**
+	 * @param twitterBaseUrl
+	 *            the twitterBaseUrl to set
+	 */
+	public void setTwitterBaseUrl(String twitterBaseUrl) {
+		this.twitterBaseUrl = twitterBaseUrl;
+	}
+
+	/**
+	 * @param twitterAccessToken
+	 *            the twitterAccessToken to set
+	 */
+	public void setTwitterAccessToken(String twitterAccessToken) {
+		this.twitterAccessToken = twitterAccessToken;
+	}
+
+	/**
+	 * @param twitterAccessSecret
+	 *            the twitterAccessSecret to set
+	 */
+	public void setTwitterAccessSecret(String twitterAccessSecret) {
+		this.twitterAccessSecret = twitterAccessSecret;
+	}
+
+	/**
+	 * @param twitterConsumerKey
+	 *            the twitterConsumerKey to set
+	 */
+	public void setTwitterConsumerKey(String twitterConsumerKey) {
+		this.twitterConsumerKey = twitterConsumerKey;
+	}
+
+	/**
+	 * @param twitterConsumerSecret
+	 *            the twitterConsumerSecret to set
+	 */
+	public void setTwitterConsumerSecret(String twitterConsumerSecret) {
+		this.twitterConsumerSecret = twitterConsumerSecret;
+	}
+
+	/**
+	 * @param twitterTokenUrl
+	 *            the twitterTokenUrl to set
+	 */
+	public void setTwitterTokenUrl(String twitterTokenUrl) {
+		this.twitterTokenUrl = twitterTokenUrl;
+	}
 
 	public static void main(String[] args) {
 
@@ -34,7 +96,7 @@ public class TwitterOperations {
 			public void run() {
 				try {
 
-					bearerToken = requestBearerToken(getTokenURL);
+					bearerToken = requestBearerToken(twitterTokenUrl);
 					searchTweets("https://api.twitter.com/1.1/search/tweets.json?count=100&q=greenfield+stadium&result_type=recent");
 
 				} catch (IOException e) {
@@ -64,7 +126,9 @@ public class TwitterOperations {
 	private static String requestBearerToken(String endPointUrl)
 			throws IOException {
 		HttpsURLConnection connection = null;
-		String encodedCredentials = encodeKeys(CONSUMER_KEY, CONSUMER_SECRET);
+
+		String encodedCredentials = encodeKeys(twitterConsumerKey,
+				twitterConsumerSecret);
 
 		try {
 			URL url = new URL(endPointUrl);
@@ -172,7 +236,9 @@ public class TwitterOperations {
 	public Object getJSONwithScreenName(String screenName) throws IOException,
 			JSONException {
 
-		bearerToken = requestBearerToken(getTokenURL);
+		System.out.println("=============here====================="
+				+ twitterTokenUrl);
+		bearerToken = requestBearerToken(twitterTokenUrl);
 		System.out
 				.println("https://api.twitter.com/1.1/search/tweets.json?count=100&q="
 						+ screenName + "&result_type=recent");
@@ -187,7 +253,7 @@ public class TwitterOperations {
 	public Object getJSONwithId(String userId) throws IOException,
 			JSONException {
 
-		bearerToken = requestBearerToken(getTokenURL);
+		bearerToken = requestBearerToken(twitterTokenUrl);
 		String jsonStr = searchTweets("https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name="
 				+ userId + "&count=100");
 

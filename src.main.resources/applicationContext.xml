@@ -11,5 +11,8 @@
 	
 	<context:component-scan base-package="com.hack.rest" />
 	<context:property-placeholder location="classpath*:hack.properties" />
+	<bean id="twitterOperations" class="com.hack.java.TwitterOperations" p:twitterBaseUrl="${twitter.base.url}" 
+	p:twitterAccessToken="${twitter.access.token}" p:twitterAccessSecret="${twitter.access.secret}" p:twitterConsumerKey="${twitter.consumer.key}"
+	p:twitterConsumerSecret="${twitter.consumer.secret}" p:twitterTokenUrl="${twitter.token.url}"/>	
 		
 </beans>
