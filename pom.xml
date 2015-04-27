@@ -294,44 +294,13 @@
 		<profile>
 			<id>dev</id>
 			<properties>
-				<IQAuthURL>http://beta.myvisualiq.com/iqis/IQWFrontController?handler=IQA000</IQAuthURL>
-				<postgres.driverclass>org.postgresql.Driver</postgres.driverclass>
-				<postgres.url>jdbc:postgresql://10.200.13.124:5432/zeus_db_dev</postgres.url>
-				<postgres.username>zeus_ui</postgres.username>
-				<postgres.password>zeus_ui</postgres.password>
-				<netezza.driverclass>org.netezza.Driver</netezza.driverclass>
-				<netezza.url>jdbc:netezza://10.200.29.31:5480/COOKIE_UDP_JA_META_DEV</netezza.url>
-				<netezza.username>ZEUS_JA_OPS</netezza.username>
-				<netezza.password>h7frdexvh7rdxexb</netezza.password>
-				<DBMetadataServiceURL>http://10.200.13.75:8585/Scheduler/rest/client/configdata/</DBMetadataServiceURL>
-				<mail.env>DEV</mail.env>
+				<twitter.base.url>https://api.twitter.com/1.1/</twitter.base.url>
+				<twitter.access.token>3013300573-DxiN7arVqrio38ICoHTJJ9sKujEA2b8AHLNx1yG</twitter.access.token>
+				<twitter.access.secret>gZwbQfXeHHocYaenASQqgQIJcaORpd5Wu5zGZ0HK7iU51</twitter.access.secret>
+				<twitter.consumer.key>9iXXUZRYTbY47tAnUAM0r9tth</twitter.consumer.key>
+				<twitter.consumer.secret>xZKJ9L0CyZfDCfa1PibRmxjsugGvqYi2UMwLm4RJowXl7m1sC2</twitter.consumer.secret>
+				<twitter.token.url>https://api.twitter.com/oauth2/token</twitter.token.url>
 				<environment>DEV</environment>
-				<attachment.host>10.200.13.75</attachment.host>
-				<attachment.port>8022</attachment.port>
-				<attachment.userName>zeus</attachment.userName>
-
-			</properties>
-		</profile>
-		<profile>
-			<id>qa</id>
-			<properties>
-				<IQAuthURL>http://beta.myvisualiq.com/iqis/IQWFrontController?handler=IQA000</IQAuthURL>
-				<postgres.driverclass>org.postgresql.Driver</postgres.driverclass>
-				<postgres.url>jdbc:postgresql://bos_pg_qa:15433/zeus_db_test</postgres.url>
-				<postgres.username>zeus_ui</postgres.username>
-				<postgres.password>zeus_ui</postgres.password>
-				<netezza.driverclass>org.netezza.Driver</netezza.driverclass>
-				<netezza.url>jdbc:netezza://10.200.29.31:5480/COOKIE_UDP_JA_META_QA</netezza.url>
-				<netezza.username>ZEUS_JA_OPS</netezza.username>
-				<netezza.password>h7frdexvh7rdxexb</netezza.password>
-				<DBMetadataServiceURL>http://192.168.2.97:8484/Scheduler/rest/client/configdata/</DBMetadataServiceURL>
-				<mail.env>QA</mail.env>
-				<environment>QA</environment>
-				<attachment.host>10.200.13.97</attachment.host>
-				<attachment.port>8022</attachment.port>
-				<attachment.userName>zeus</attachment.userName>
-				<notification.url>http://192.168.2.97:8383/notificationsystem/service/notify</notification.url>
-				<timeline.url>http://192.168.2.97:8484/Zeus-MW/rest/activityLog/createActivityLog</timeline.url>
 			</properties>
 		</profile>
 	</profiles>
